@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Randewu</title>
+    <link rel="stylesheet" href="css/randewu.css" />
+  </head>
+  <body>
+    <div id="valentineQuestion"><b>Heyo, wychodzimy gdzieś???</b></div>
+    <button class="answerButton" onclick="location.href='thankyou.html'">
+      Tak
+    </button>
+    <button class="answerButton" id="move" onmouseover="runaway(this)">Nieee</button>
+    <br />
+    <img src="cat.gif" alt="cat asking question" class="responsive" />
+    
+
+    <script>
+function runaway(id) {
+ 
+  id.style.top = Math.round(Math.random() * 250) - 200 + 'px';
+  id.style.left = Math.round(Math.random() * 250) - 200 + 'px';
+
+ 
+  var yesButton = document.querySelector('button[onclick*="thankyou.html"]');
+  if (yesButton) { 
+    var currentFontSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = (isNaN(currentFontSize) ? 16 : currentFontSize + 10) + "px"; 
+    console.error("Nie znaleziono przycisku z onclick zawierającym 'thankyou.html'");
+  }
+}
+
+document.getElementById("move").addEventListener("click", function() {
+  var moveElement = document.getElementById("move");
+  if (moveElement) { 
+      runaway(moveElement);
+  } else {
+      console.error("Nie znaleziono elementu o id 'move'");
+  }
+});
+    </script>
+  </body>
+</html>
